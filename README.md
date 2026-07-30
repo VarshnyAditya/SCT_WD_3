@@ -37,8 +37,8 @@ Quiz-App/
 
 ## 📸 Preview
 
-![Quiz](images/img1.png?width=400) 
-![Score](images/img2.png?width=400)
+![Quiz](images/img1.png?width=250) 
+![Score](images/img2.png?width=250)
 
 
 ## 📚 Concepts Practiced
