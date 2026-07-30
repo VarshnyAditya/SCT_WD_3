@@ -37,6 +37,7 @@ Quiz-App/
 
 ## 📸 Preview
 
+![Ready](images/img3.png?width=250)
 ![Quiz](images/img1.png?width=250) 
 ![Score](images/img2.png?width=250)
 

@@ -48,15 +48,21 @@ const questions = [
         ]
     }
 ];
+// DOM Elements
+const startScreen = document.getElementById("start-screen");
+const quizScreen = document.getElementById("quiz-screen");
+const startBtn = document.getElementById("start-btn");
 
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
 const feedback = document.getElementById("feedback");
 
+// Variables
 let currentQuestionIndex = 0;
 let score = 0;
 
+// Start Quiz
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
@@ -64,6 +70,7 @@ function startQuiz() {
     showQuestion();
 }
 
+// Show Question
 function showQuestion() {
     resetState();
 
@@ -78,7 +85,7 @@ function showQuestion() {
         button.classList.add("btn");
 
         if (answer.correct) {
-            button.dataset.correct = answer.correct;
+            button.dataset.correct = "true";
         }
 
         button.addEventListener("click", selectAnswer);
@@ -86,6 +93,7 @@ function showQuestion() {
     });
 }
 
+// Reset
 function resetState() {
     nextButton.style.display = "none";
     feedback.textContent = "";
@@ -95,6 +103,7 @@ function resetState() {
     }
 }
 
+// Select Answer
 function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
@@ -106,7 +115,7 @@ function selectAnswer(e) {
         feedback.textContent = "✅ Good!";
         feedback.style.color = "green";
 
-        selectedBtn.style.backgroundColor = "green";
+        selectedBtn.style.background = "green";
         selectedBtn.style.color = "#fff";
 
         score++;
@@ -117,7 +126,7 @@ function selectAnswer(e) {
         feedback.textContent = "❌ Oops!";
         feedback.style.color = "red";
 
-        selectedBtn.style.backgroundColor = "red";
+        selectedBtn.style.background = "red";
         selectedBtn.style.color = "#fff";
     }
 
@@ -134,15 +143,16 @@ function selectAnswer(e) {
     nextButton.style.display = "block";
 }
 
+// Score
 function showScore() {
     resetState();
-    feedback.textContent = "";
-    questionElement.innerHTML = `You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>!`;
+    questionElement.innerHTML = `🎉 You scored <strong>${score}</strong> out of <strong>${questions.length}</strong>!`;
 
     nextButton.innerHTML = "Play Again";
     nextButton.style.display = "block";
 }
 
+// Next Button
 function handleNextButton() {
     currentQuestionIndex++;
 
@@ -153,14 +163,33 @@ function handleNextButton() {
     }
 }
 
-nextButton.addEventListener("click", () => {
+// Start Button
+startBtn.addEventListener("click", () => {
 
-    if (currentQuestionIndex < questions.length) {
-        handleNextButton();
-    } else {
-        startQuiz();
-    }
+    startScreen.style.display = "none";
+    quizScreen.style.display = "block";
+
+    startQuiz();
 
 });
 
-startQuiz();
+// Next / Play Again
+nextButton.addEventListener("click", () => {
+    if (currentQuestionIndex < questions.length - 1) {
+        handleNextButton();
+    } else {
+
+        if (nextButton.innerHTML === "Play Again") {
+
+            startScreen.style.display = "block";
+            quizScreen.style.display = "none";
+
+        } else {
+
+            showScore();
+
+        }
+
+    }
+
+});

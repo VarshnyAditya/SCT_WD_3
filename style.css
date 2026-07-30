@@ -73,6 +73,45 @@ body{
     font-weight:600;
     text-align:center;
 }
+#start-screen{
+    text-align:center;
+    padding:25px 10px;
+}
+
+#start-screen h2{
+    color:#001e4d;
+    margin-bottom:15px;
+}
+
+#start-screen p{
+    margin-bottom:20px;
+    color:#555;
+}
+
+#start-screen ul{
+    list-style:none;
+    margin-bottom:30px;
+}
+
+#start-screen ul li{
+    margin:10px 0;
+    font-size:17px;
+}
+
+#start-btn{
+    background:#001e4d;
+    color:#fff;
+    border:none;
+    padding:14px 35px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+#start-btn:hover{
+    background:#00357f;
+}
 /* For Tablets */
 @media (max-width:768px){
 
